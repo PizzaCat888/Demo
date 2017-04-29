@@ -1,11 +1,24 @@
 {
   "name": "foodblog",
   "version": "1.0.0",
-  "description": "An example of a basic community blog site centered around food. It includes basic CRUD and authorization, as well as authentication.",
+  "description": "An example of a basic dynamic community blog site centered around food. It includes basic CRUD and authorization, as well as authentication.",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jack Lin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "express-sanitizer": "^1.0.2",
+    "method-override": "^2.3.8",
+    "mongoose": "^4.9.6",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^4.0.0",
+    "sanitizer": "^0.1.3"
+  }
 }
