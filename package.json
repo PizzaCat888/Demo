@@ -1,0 +1,11 @@
+{
+  "name": "foodblog",
+  "version": "1.0.0",
+  "description": "An example of a basic community blog site centered around food. It includes basic CRUD and authorization, as well as authentication.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jack Lin",
+  "license": "ISC"
+}
