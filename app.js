@@ -23,11 +23,22 @@ app.use(expressSanitizer());
 //Database
 mongoose.connect("mongodb://localhost/food_blog");
 
+//landing page
 app.get("/", function(req, res){
     res.render("landing");
 });
 
-
+//index route
+app.get("/foods", function(req, res) {
+    foodBlog.find({}, function(err, foods){
+        if(err){
+            console.log(err)
+        } else {
+             res.render("foods/foodPost",{foods:foods});
+        }
+    });
+   
+});
 
 
 
