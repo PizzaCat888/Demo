@@ -6,11 +6,32 @@
     <h1>Welcome to FoodTopia</h1>
     <p>View and share delicious foods from around the world!</p>
     <p>
-    <a class="btn btn-primary btn-large" href="*">Click here to start sharing!</a>
+    <a class="btn btn-primary btn-large" href="/foods/new">Click here to start sharing!</a>
     </p>
     </div>
 </header>
 
+<div class="row text-center" style= "display:flex; flex-wrap: wrap;">
+      <% foods.forEach(function(food){ %>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnail">
+                <img src="<%= food.image %>">
+                <div class="caption">
+                    <h4> <%= food.name %> </h4>
+                </div>
+                <p>
+                    <a href="#" class="btn btn-primary">More Info</a>
+                    <!--We need to createa an ID for our show template in order-->
+                    <!--to capture it in our app.js-->
+                </p>
+            </div>
+       
+        
+        </div>
+        <% }); %>
+        </div>
+    </div>
+</div>
 
 
 

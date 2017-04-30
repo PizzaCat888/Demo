@@ -13,3 +13,8 @@
 #delete-form{display: inline;
     
 }
+
+#textbox {
+  width: 350px;
+  height: 150px;
+}
