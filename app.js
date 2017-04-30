@@ -28,23 +28,12 @@ app.get("/", function(req, res){
     res.render("landing");
 });
 
-//index route
-app.get("/foods", function(req, res) {
-    foodBlog.find({}, function(err, foods){
-        if(err){
-            console.log(err)
-        } else {
-             res.render("foods/foodPost",{foods:foods});
-        }
-    });
-   
-});
+//define our routes in order to use properly
+var foodRoutes = require("./routes/mainfood.js")
 
 
-
-app.get("*", function(req, res){
-    res.send("Sorry, the page you are looking for does not exist");
-});
+//tells app.js to use routes
+app.use("/foods", foodRoutes);
 
 app.listen(process.env.PORT, process.env.IP, function(){
     console.log("Server started!");
