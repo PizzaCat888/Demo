@@ -13,3 +13,24 @@ Include this for the landing page(landing.ejs) after connect flash is utilized. 
     <!--        </div>-->
     <!--    <% } %>-->
     <!--</div>-->
+    
+    
+    
+    //for show page when authentication is added. One is for the main post, one for is user comments.
+    
+    
+  <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+                            <a class="btn btn-xs btn-warning" 
+                            href="/foods/<%=food._id %>/comments/<%=comment._id%>/edit">Edit Comment</a>
+                            <form id="delete-form" action="/foods/<%=food._id %>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                               <input class="btn btn-xs btn-danger" type="submit" value="Delete">
+                            </form>
+                            <% } %>
+                            
+
+  <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+                        <a class="btn btn-warning" href="/foods/<%=food._id %>/edit">Edit</a>
+                        <form id="delete-form" action="/foods/<%= food._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    <% } %>

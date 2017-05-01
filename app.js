@@ -8,7 +8,8 @@ var express          = require("express"),
     flash            = require("connect-flash");
     
 //Models and Schema
-var foodBlog = require("./models/foodpost.js")
+var foodBlog = require("./models/foodpost.js"),
+    Comment = require("./models/comment.js");
 
     
     

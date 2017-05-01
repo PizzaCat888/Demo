@@ -49,7 +49,20 @@ router.post("/",  function (req, res){
    });
 
 
-
+//show route
+router.get("/:id", function(req, res){
+    //find the campground with provided ID, using new method with Mongo
+    foodBlog.findById(req.params.id).populate("comments").exec(function(err, foundFoodPost){
+        if(err){
+            console.log(err)
+        } else {
+            console.log(foundFoodPost);
+            //render show template with that ID
+    res.render("foods/show", {food: foundFoodPost});
+        }
+    });
+   
+});
 
 
 
