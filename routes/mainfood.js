@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var foodBlog = require("../models/foodpost.js");
-
+var middleware = require("../middleware");
 
 //index route
 router.get("/", function(req, res) {
@@ -16,25 +16,25 @@ router.get("/", function(req, res) {
 });
 
 //new route
-router.get("/new",  function(req,res){
+router.get("/new", function(req,res){
     res.render("foods/newPost.ejs");
 });
 
 //create route
-router.post("/",  function (req, res){
+router.post("/",  middleware.isLoggedIn, function (req, res){
  
    //get data from form and add to array
    var name = req.body.name;
    var image = req.body.image;
    var price = req.body.price;
    var desc = req.body.description;
-//   var author = {
-//       id: req.user._id,
-//       username:req.user.username
-//   };
+   var author = {
+      id: req.user._id,
+      username:req.user.username
+  };
 
-//remember to add -> author:author in future versions
-   var newFoodPost= {name: name, price:price, image: image, description: desc};
+
+   var newFoodPost= {name: name, price:price, image: image, description: desc, author: author};
    //create a new campground and save to DB
    foodBlog.create(newFoodPost, function(err, newlyCreated){
        if(err){
@@ -64,10 +64,37 @@ router.get("/:id", function(req, res){
    
 });
 
+//edit route
+router.get("/:id/edit", middleware.checkBlogPostOwnership, function(req, res) {
+    foodBlog.findById(req.params.id, function(err, foundFoodPost){
+        res.render("foods/edit", {food: foundFoodPost});
+    });
+});
 
+//update route
+router.put("/:id",  middleware.checkBlogPostOwnership,function(req, res){
+    //find and update the correct campground
+    
+    foodBlog.findByIdAndUpdate(req.params.id, req.body.food, function(err, updatedFoodPost){
+        if(err){
+            res.redirect("/foods");
+        } else {
+           res.redirect("/foods/" + req.params.id); 
+        }
+    })
+   
+})
 
-
-
+//destroy route
+router.delete("/:id",  middleware.checkBlogPostOwnership,  function(req, res){
+    foodBlog.findByIdAndRemove(req.params.id, function(err){
+        if(err){
+            res.redirect("/foods");
+        } else {
+            res.redirect("/foods");
+        }
+    });
+});
 
 
 

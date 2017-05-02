@@ -20,17 +20,15 @@
                 </button>
              <a class="navbar-brand" href="/"><i class="fa fa-cutlery fa-fw" aria-hidden="true"></i>FoodTopia</a>
             </div>
-            
-            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                  <!--don't forget to include auth logic in final-->
+                  <% if(!currentUser){ %>
                     <li><a href="/login">Login</a></li>
                     <li><a href="/register">Sign Up</a></li>
-                
-                    <li><a href="#">Signed In As </a> </li>
+                 <% } else { %>
+                    <li><a href="#">Signed In As <%=currentUser.username %></a> </li>
                     <li><a href="/logout">Logout</a></li>
-                 
+                 <% } %>
                 </ul>
             </div>
         </div>

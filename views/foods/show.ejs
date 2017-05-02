@@ -8,13 +8,12 @@
                     <h4> <a><%=food.name %></a></h4>
                     <p>  <%=food.description %></p>
                     <p>Submitted by <%= food.author.username %></p>
-                    
-                  
+                   <% if(currentUser && food.author.id.equals(currentUser._id)) { %>
                         <a class="btn btn-warning" href="/foods/<%=food._id %>/edit">Edit</a>
                         <form id="delete-form" action="/foods/<%= food._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-danger">Delete</button>
                         </form>
-                   
+                    <% } %>
                 </div>
             </div>
             <div class="well">
@@ -30,12 +29,13 @@
                            <p>
                                 <%=foods.text %>
                             </p>
-                        
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
                             <a class="btn btn-xs btn-warning" 
                             href="/foods/<%=food._id %>/comments/<%=comment._id%>/edit">Edit Comment</a>
                             <form id="delete-form" action="/foods/<%=food._id %>/comments/<%=comment._id%>?_method=DELETE" method="POST">
                                <input class="btn btn-xs btn-danger" type="submit" value="Delete">
                             </form>
+                        <% } %>
                            
                     </div>
                 </div>

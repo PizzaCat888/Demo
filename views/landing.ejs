@@ -9,11 +9,22 @@
     </head>
     <body>
     
-    <!--Make button responsive!-->
+     <div class="container">
+        <% if(error && error.length > 0){ %>
+            <div class="alert alert-danger" role="alert">
+                <%= error %>
+            </div>
+        <% } %>
+        <% if(success && success.length > 0){ %>
+            <div class="alert alert-success" role="alert">
+                <%= success %>
+            </div>
+        <% } %>
+    </div>
     
     <div class="container-fluid" id="landing-header">
  		<h1>Welcome to FoodTopia</h1>
-		<a href="/foods" data-toggle="collapse"  class="btn btn-lg btn-success">Click Here To View Foods From Around The World</a>
+		<a href="/foods" data-toggle="collapse"  class="btn btn-lg btn-success">Enter</a>
     </div>
     
     <ul class="slideshow">
