@@ -43,26 +43,15 @@ router.get("/login", function(req, res){
 })
 
 //login logic
-router.post('/login', function(req, res, next) {
-  passport.authenticate('local', function(err, user, info) {
-    if (err) {
-      return next(err); // will generate a 500 error
-    }
-    // Generate a JSON response reflecting authentication status
-    if (! user) {
-      req.flash("error", "Oops! Something Went Wrong! Please Enter Your Login Information Correctly Or Register for a New Account")
-      res.redirect("/login")
-    }
-    req.login(user, loginErr => {
-      if (loginErr) {
-        return next(loginErr);
-      }
-      req.flash("success", "Welcome Back To FoodTopia " + user.username)
-      return res.redirect("/foods")
-      
-    });      
-  })(req, res, next);
-});
+router.post("/login", passport.authenticate("local", {
+    
+    successRedirect:"/foods",
+    failureRedirect:"/login",
+    failureFlash: true,
+    successFlash:"Welcome Back to FoodTopia"
+}),function(req, res){
+    
+})
 
 
 //logout logic
