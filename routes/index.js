@@ -1,8 +1,8 @@
-var express = require("express");
-var router = express.Router();
+var express  = require("express");
+var router   = express.Router();
 var passport = require("passport");
 var foodBlog = require("../models/foodpost.js");
-var User = require("../models/user.js");
+var User     = require("../models/user.js");
 
 
 //landing page

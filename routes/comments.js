@@ -1,8 +1,8 @@
-var express = require("express");
-var router = express.Router({mergeParams: true});
+var express    = require("express");
+var router     = express.Router({mergeParams: true});
 //tells express to merge params from foodpost and comments together
-var foodBlog = require("../models/foodpost.js");
-var Comment = require("../models/comment.js");
+var foodBlog   = require("../models/foodpost.js");
+var Comment    = require("../models/comment.js");
 var middleware = require("../middleware");
 
 //===========
