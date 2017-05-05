@@ -47,7 +47,7 @@ app.use(function(req, res, next){
 
 //Database
 // var url = process.env.DATABASEURL || "mongodb://Jack1:password@ds133271.mlab.com:33271/foodtopia"
-mongoose.connect(process.env.DATABASEURL);
+mongoose.connect("mongodb://Jack1:password@ds133271.mlab.com:33271/foodtopia");
 
 
 
