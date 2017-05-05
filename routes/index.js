@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var passport = require("passport");
+var foodBlog = require("../models/foodpost.js");
 var User = require("../models/user.js");
 
 
@@ -42,13 +43,13 @@ router.get("/login", function(req, res){
 })
 
 //login logic
-router.post("/login", passport.authenticate("local", {
-    
-    successRedirect:"/foods",
-    failureRedirect:"/login"
-}),function(req, res){
-    
+router.post("/login", passport.authenticate('local'),function(req, res) {
+    req.flash("success", "Welcome to FoodTopia ");
+    res.redirect("/foods");
 })
+
+
+
 
 //logout logic
 

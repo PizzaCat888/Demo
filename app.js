@@ -45,7 +45,7 @@ app.use(function(req, res, next){
 });
 
 //Database
-mongoose.connect("mongodb://localhost/food_blog");
+mongoose.connect("mongodb://localhost/food_blog1");
 
 
 //define our routes in order to use properly
