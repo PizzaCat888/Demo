@@ -42,13 +42,20 @@ router.get("/login", function(req, res){
     res.render("login");
 })
 
+
 //login logic
-router.post("/login", passport.authenticate('local'),function(req, res) {
-    req.flash("success", "Welcome to FoodTopia ");
-    res.redirect("/foods");
-})
-
-
+router.post('/login', function(req,res,next) {
+    passport.authenticate('local', function(err,user) {
+            if(user){
+                req.flash("success", "Welcome Back To FoodTopia ")
+                res.redirect("/foods")
+            } else {
+            if(!user) 
+                req.flash("error", "Oops! Something Went Wrong! Please Enter Your Login Information Correctly Or Register for a New Account")
+                res.redirect("/login")
+            }
+    })(req,res,next);
+});
 
 
 //logout logic
