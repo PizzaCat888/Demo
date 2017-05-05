@@ -44,8 +44,11 @@ app.use(function(req, res, next){
     next();
 });
 
+
 //Database
-mongoose.connect("mongodb://localhost/food_blog1");
+// var url = process.env.DATABASEURL || "mongodb://Jack1:password@ds133271.mlab.com:33271/foodtopia"
+mongoose.connect(process.env.DATABASEURL);
+
 
 
 //define our routes in order to use properly
