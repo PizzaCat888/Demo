@@ -14,7 +14,7 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err)
         } else {
-            res.render("comments/new", {food:foundFoodPost});
+            res.render("comments/newcomment", {food:foundFoodPost});
         }
     });
     
@@ -23,7 +23,6 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 //comments create
 router.post("/", middleware.isLoggedIn,function(req, res){
-    //lookup campground by id
     foodBlog.findById(req.params.id, function(err,foundFoodPost){
         if(err){
             console.log(err);

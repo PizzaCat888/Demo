@@ -16,12 +16,12 @@ router.get("/", function(req, res) {
 });
 
 //new route
-router.get("/new", function(req,res){
+router.get("/new",middleware.isLoggedIn,function(req,res){
     res.render("foods/newPost.ejs");
 });
 
 //create route
-router.post("/",  middleware.isLoggedIn, function (req, res){
+router.post("/",middleware.isLoggedIn, function (req, res){
  
    //get data from form and add to array
    var name = req.body.name;
@@ -100,9 +100,9 @@ router.delete("/:id",  middleware.checkBlogPostOwnership,  function(req, res){
 
 
 
-router.get("*", function(req, res){
-    res.send("Sorry, the page you are looking for does not exist");
-});
+// router.get("*", function(req, res){
+//     res.send("Sorry, the page you are looking for does not exist");
+// });
 
 
 
